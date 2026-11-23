@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -9,568 +9,393 @@
   html { scroll-behavior: smooth; }
   section[id] { scroll-margin-top: 70px; }
   @media (max-width: 700px) { nav, section { padding-left: 20px !important; padding-right: 20px !important; } h1 { font-size: 40px !important; } }
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
-  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #F8F9FB; color: #111827; }
-  h1, h2, h3, .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap');
+  body { margin: 0; font-family: 'Geist', 'Inter', system-ui, sans-serif; background: #F6F6F3; color: #0B0B0F; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Geist', 'Inter', system-ui, sans-serif; }
   a { color: inherit; text-decoration: none; }
-  a:hover { color: #2563EB; }
-  ::selection { background: #2563EB; color: #fff; }
-  .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  a:hover { color: #2B59FF; }
+  ::selection { background: #2B59FF; color: #fff; }
+  .wrap { padding-left: max(32px, calc((100% - 1200px) / 2)); padding-right: max(32px, calc((100% - 1200px) / 2)); box-sizing: border-box; width: 100%; }
+  .serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; letter-spacing: 0; }
+  .mono { font-family: 'Geist Mono', ui-monospace, monospace; }
+  .navlinks a { color: #4A4A55; }
+  .navlinks a:hover { color: #0B0B0F; }
+  .btn-dark:hover { color: #fff; background: #2B59FF !important; }
+  .btn-ghost:hover { border-color: #0B0B0F !important; color: #0B0B0F; }
+  .bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .bento .span2 { grid-column: span 2; }
+  .card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(11,11,15,0.08); border-color: rgba(11,11,15,0.18) !important; }
+  .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .gallery .g-wide { grid-column: span 2; grid-row: span 2; }
   .gallery .g-wide img { aspect-ratio: auto !important; height: 0 !important; flex: 1 1 0 !important; }
-  .gallery .g-item { transition: transform .2s ease, box-shadow .2s ease; }
-  .gallery .g-item:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(17,24,39,0.14); color: inherit; }
-  @media (max-width: 900px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gallery .g-wide { grid-row: auto; } .gallery .g-wide img { aspect-ratio: 16 / 10 !important; height: auto !important; flex: 0 0 auto !important; } }
-  @media (max-width: 560px) { .gallery { grid-template-columns: 1fr; } .gallery .g-wide { grid-column: auto; } }
+  .shot { transition: transform .25s ease, border-color .25s ease; }
+  .shot:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.35) !important; color: #fff; }
+  .pub:hover h3 { color: #2B59FF; }
+  .contact-link:hover { color: #fff; border-color: #fff !important; }
+  @media (max-width: 960px) {
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gallery .g-wide { grid-row: auto; }
+    .gallery .g-wide img { aspect-ratio: 16 / 10 !important; height: auto !important; flex: 0 0 auto !important; }
+    .navlinks { display: none !important; }
+  }
+  @media (max-width: 620px) {
+    .wrap { padding-left: 20px; padding-right: 20px; }
+    .bento, .gallery { grid-template-columns: 1fr; }
+    .bento .span2, .gallery .g-wide { grid-column: auto; }
+    .hero-title { font-size: 40px !important; }
+    .xl-title { font-size: 34px !important; }
+  }
 </style>
 </head>
 <body>
-<div style="width: 100%; max-width: 100%; box-sizing: border-box; display: flex; flex-direction: column;">
+<div style="width: 100%; box-sizing: border-box; display: flex; flex-direction: column;">
 
   <!-- NAV -->
-  <nav style="position: sticky; top: 0px; z-index: 50; width: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 18px max(64px, calc((100% - 1200px) / 2)); border-bottom: 1px solid rgba(17,24,39,0.08); gap: 16px; background: rgba(248,249,251,0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
-    <a href="#top" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.01em;">Ishak Riali</a>
-    <div style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; font-weight: 500; color: #4B5563;">
-      <a href="#about">About</a>
+  <nav class="wrap" style="position: sticky; top: 0px; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; background: rgba(246,246,243,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(11,11,15,0.07);">
+    <a href="#top" style="display: flex; align-items: center; gap: 10px; color: #0B0B0F;">
+      <span style="width: 34px; height: 34px; border-radius: 10px; background: #0B0B0F; color: #F6F6F3; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; letter-spacing: 0.02em;">IR</span>
+      <span style="font-size: 16px; font-weight: 600; letter-spacing: -0.01em;">Ishak Riali</span>
+    </a>
+    <div class="navlinks" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
+      <a href="#work">Work</a>
+      <a href="#expertise">Expertise</a>
       <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#publications">Publications</a>
       <a href="#research">Research</a>
       <a href="#contact">Contact</a>
     </div>
+    <a href="#contact" class="btn-dark" style="background: #0B0B0F; color: #F6F6F3; padding: 10px 18px; border-radius: 999px; font-size: 13.5px; font-weight: 600; white-space: nowrap;">Get in touch</a>
   </nav>
 
   <!-- HERO -->
-  <section id="top" style="width: 100%; box-sizing: border-box; padding: 96px max(64px, calc((100% - 1200px) / 2)) 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; position: relative; overflow: hidden;">
-    <div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px; z-index: 1;">
-      <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">
-        <span style="width: 7px; height: 7px; border-radius: 50%; background: #2563EB; display: inline-block;"></span>
-        Available for research &amp; consulting collaborations
+  <section id="top" class="wrap" style="padding-top: 88px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 56px;">
+    <div style="display: flex; flex-direction: column; gap: 28px;">
+      <div class="mono" style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 12.5px; color: #4A4A55; text-transform: uppercase; letter-spacing: 0.06em;">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #16A34A; box-shadow: 0 0 0 4px rgba(22,163,74,0.15); display: inline-block;"></span>
+        <span>Ishak Riali, Ph.D.</span>
+        <span style="color: #A1A1AA;">/</span>
+        <span>Data &amp; AI researcher, Leiden</span>
+        <span style="color: #A1A1AA;">/</span>
+        <span>Open to collaborations</span>
       </div>
-      <h1 style="margin: 0; font-size: 56px; line-height: 1.08; font-weight: 700; letter-spacing: -0.02em; color: #111827;">
-        Ishak Riali, Ph.D.
-      </h1>
-      <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #374151; max-width: 720px; font-weight: 500;">
-        I build knowledge graphs, Graph-RAG systems and ETL pipelines that turn messy, uncertain data into structured knowledge.
-      </p>
-      <div id="about" style="display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.7; color: #4B5563; max-width: 720px; scroll-margin-top: 90px;">
-        <p style="margin: 0;">Based in Leiden, The Netherlands. I combine Semantic Web technologies, probabilistic reasoning and Large Language Models into systems that are rigorous enough for research and robust enough for production, in any domain.</p>
-        <p style="margin: 0;">My Ph.D. (University of Blida 1, Algeria) focused on modeling uncertain knowledge in the Semantic Web, combining probabilistic reasoning, fuzzy logic and Bayesian networks with ontology engineering. I then spent five years as a university lecturer and data-center manager, teaching advanced databases, logic and programming and supervising twelve Master's theses.</p>
-        <p style="margin: 0;">Today, as a Postdoctoral Researcher at Leiden University, I build ETL pipelines, knowledge graphs and Graph-RAG systems on large heterogeneous datasets, methods that transfer directly to healthcare, IoT, industry or digital humanities.</p>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px;">
-        <a href="#contact" style="background: #111827; color: #F8F9FB; padding: 13px 26px; border-radius: 999px; font-size: 14px; font-weight: 600;">Get in touch</a>
-        <a href="#experience" style="border: 1px solid rgba(17,24,39,0.18); padding: 13px 26px; border-radius: 999px; font-size: 14px; font-weight: 600; color: #111827;">View experience</a>
-      </div>
+      <h1 class="hero-title" style="margin: 0; font-size: 72px; line-height: 1.02; font-weight: 600; letter-spacing: -0.035em; max-width: 1100px;">I build <span class="serif" style="color: #2B59FF;">knowledge graphs</span>, <span style="white-space: nowrap;">Graph-RAG</span> systems and ETL pipelines that turn messy, uncertain data into <span class="serif">structured knowledge.</span></h1>
     </div>
 
-    <div style="flex: 1 1 320px; min-width: 260px; max-width: 420px; display: flex; justify-content: center; z-index: 1;">
-      <svg viewBox="0 0 360 360" width="100%" height="auto" style="max-width: 380px;" role="img" aria-label="Abstract illustration of a connected knowledge graph">
-        <circle cx="180" cy="180" r="176" fill="#F1F3F6"></circle>
-        <g stroke="#2563EB" stroke-width="1.4" opacity="0.55">
-          <line x1="180" y1="90" x2="100" y2="150"></line>
-          <line x1="180" y1="90" x2="260" y2="150"></line>
-          <line x1="100" y1="150" x2="120" y2="240"></line>
-          <line x1="260" y1="150" x2="240" y2="240"></line>
-          <line x1="120" y1="240" x2="240" y2="240"></line>
-          <line x1="180" y1="90" x2="180" y2="180"></line>
-          <line x1="180" y1="180" x2="120" y2="240"></line>
-          <line x1="180" y1="180" x2="240" y2="240"></line>
-          <line x1="100" y1="150" x2="180" y2="180"></line>
-          <line x1="260" y1="150" x2="180" y2="180"></line>
-          <line x1="70" y1="230" x2="120" y2="240"></line>
-          <line x1="290" y1="230" x2="240" y2="240"></line>
-        </g>
-        <g fill="#111827">
-          <circle cx="180" cy="90" r="9"></circle>
-          <circle cx="100" cy="150" r="7"></circle>
-          <circle cx="260" cy="150" r="7"></circle>
-          <circle cx="180" cy="180" r="11" fill="#2563EB"></circle>
-          <circle cx="120" cy="240" r="7"></circle>
-          <circle cx="240" cy="240" r="7"></circle>
-          <circle cx="70" cy="230" r="5" opacity="0.6"></circle>
-          <circle cx="290" cy="230" r="5" opacity="0.6"></circle>
-        </g>
-      </svg>
+    <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+      <div id="about" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px; font-size: 17px; line-height: 1.7; color: #3F3F46; max-width: 680px; scroll-margin-top: 90px;">
+        <p style="margin: 0;">I combine Semantic Web technologies, probabilistic reasoning and Large Language Models into systems that are rigorous enough for research and robust enough for production, in any domain.</p>
+        <p style="margin: 0;">My Ph.D. (University of Blida 1) focused on modeling uncertain knowledge in the Semantic Web. I then spent five years as a university lecturer and data-center manager, teaching databases, logic and programming and supervising twelve Master's theses.</p>
+        <p style="margin: 0;">Today, as a Postdoctoral Researcher at Leiden University, I build ETL pipelines, knowledge graphs and Graph-RAG systems on large heterogeneous datasets, methods that transfer directly to healthcare, IoT, industry or digital humanities.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;">
+          <a href="#work" class="btn-dark" style="background: #0B0B0F; color: #F6F6F3; padding: 14px 24px; border-radius: 999px; font-size: 14.5px; font-weight: 600;">See my work</a>
+          <a href="https://scholar.google.com/citations?hl=en&amp;user=uCCx51MAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" class="btn-ghost" style="border: 1px solid rgba(11,11,15,0.2); padding: 14px 24px; border-radius: 999px; font-size: 14.5px; font-weight: 600; color: #0B0B0F;">Google Scholar ↗</a>
+        </div>
+      </div>
+
+      <div style="flex: 1 1 340px; min-width: 280px; max-width: 440px; margin-left: auto; background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 22px; box-shadow: 0 24px 60px rgba(11,11,15,0.06);">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="width: 56px; height: 56px; border-radius: 50%; background: #2B59FF; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600;">IR</span>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <strong style="font-size: 17px; font-weight: 600;">Ishak Riali, Ph.D.</strong>
+            <span style="font-size: 13.5px; color: #71717A;">Postdoctoral Researcher</span>
+          </div>
+        </div>
+        <div class="mono" style="display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: #3F3F46;">
+          <div style="display: flex; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px dashed rgba(11,11,15,0.12);"><span style="color: #A1A1AA;">NOW</span><span style="text-align: right;">Leiden University, NL</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px dashed rgba(11,11,15,0.12);"><span style="color: #A1A1AA;">BEFORE</span><span style="text-align: right;">Lecturer, Univ. of Blida 1</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px dashed rgba(11,11,15,0.12);"><span style="color: #A1A1AA;">FOCUS</span><span style="text-align: right;">KG · Graph-RAG · ETL · ML</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 12px;"><span style="color: #A1A1AA;">SPEAKS</span><span style="text-align: right;">English · French · Arabic</span></div>
+        </div>
+        <a href="mailto:ishakriali@gmail.com" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #F6F6F3; border-radius: 14px; padding: 14px 16px; font-size: 14px; font-weight: 600; color: #0B0B0F;">
+          <span>ishakriali@gmail.com</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLISHED IN -->
+  <section class="wrap" style="padding-top: 26px; padding-bottom: 26px; border-top: 1px solid rgba(11,11,15,0.08); border-bottom: 1px solid rgba(11,11,15,0.08); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 36px;">
+    <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #A1A1AA;">Published in</span>
+    <span style="font-size: 15px; font-weight: 600; color: #52525B;">Knowledge and Information Systems</span>
+    <span style="font-size: 15px; font-weight: 600; color: #52525B;">Int. Journal of Fuzzy Systems</span>
+    <span style="font-size: 15px; font-weight: 600; color: #52525B;">IJSWIS</span>
+    <span style="font-size: 15px; font-weight: 600; color: #52525B;">J. of Intelligent &amp; Fuzzy Systems</span>
+    <span style="font-size: 15px; font-weight: 600; color: #52525B;">ESWC · SemDH</span>
+    <span style="font-size: 15px; font-weight: 600; color: #52525B;">ICEIS</span>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise" class="wrap" style="padding-top: 112px; padding-bottom: 112px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px;">
+        <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">01 / Expertise</span>
+        <h2 class="xl-title" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em;">What I <span class="serif">build</span> for you</h2>
+      </div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #52525B; max-width: 400px;">From raw spreadsheets and databases to systems people can question in plain language.</p>
+    </div>
+
+    <div class="bento">
+      <div class="card span2" style="background: #0B0B0F; color: #F6F6F3; border: 1px solid #0B0B0F; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 18px; min-height: 260px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.5"></circle><circle cx="19" cy="6" r="2.5"></circle><circle cx="12" cy="18" r="2.5"></circle><path d="M7.5 6h9"></path><path d="M6.3 8.2l4.4 7.6"></path><path d="M17.7 8.2l-4.4 7.6"></path></svg>
+          <span class="mono" style="font-size: 12px; color: #A1A1AA;">CORE</span>
+        </div>
+        <h3 style="margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em;">Knowledge graphs &amp; semantic integration</h3>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: #D4D4D8; max-width: 620px;">I design ontologies and turn scattered, inconsistent sources into one connected, queryable graph, with validation and uncertainty kept explicit.</p>
+        <div class="mono" style="margin-top: auto; font-size: 12.5px; color: #A1A1AA; line-height: 1.8;">RDF · OWL · SPARQL · SHACL · RDF-Star · CIDOC CRM · Neo4j · GraphDB · Protégé</div>
+      </div>
+
+      <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M21 4v5h-5"></path><path d="M9 12h6"></path><path d="M12 9v6"></path></svg>
+        <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">Graph-RAG &amp; LLM systems</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">LLM agents that write and run graph queries, answer with evidence, and generate narratives or audio from structured data.</p>
+        <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">Text-to-SPARQL · Prompting · TTS · Multi-modal</div>
+      </div>
+
+      <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg>
+        <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">ETL &amp; data pipelines</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Cleaning, mapping and deduplicating heterogeneous data, including LLM-assisted extraction from free text and entity resolution.</p>
+        <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">Python · SQL · MongoDB · GraphQL · REST</div>
+      </div>
+
+      <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="3"></circle><circle cx="17" cy="9" r="2"></circle><circle cx="9" cy="17" r="2"></circle><circle cx="17" cy="17" r="3"></circle></svg>
+        <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">Machine learning on graphs</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Embeddings, graph neural networks and deep clustering to discover structure, segment customers and classify entities.</p>
+        <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">PyTorch · TransE · GNN · KG-BERT · DEC</div>
+      </div>
+
+      <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17c3 0 3-10 6-10s3 10 6 10 3-6 6-6"></path></svg>
+        <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">Reasoning under uncertainty</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Fuzzy and probabilistic ontologies and Bayesian networks for decision support, from medical diagnosis to IoT.</p>
+        <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">Fuzzy logic · Bayesian networks · MEBN</div>
+      </div>
+
+      <div class="card" style="grid-column: 1 / -1; background: transparent; border: 1px dashed rgba(11,11,15,0.2); border-radius: 24px; padding: 24px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 40px;">
+        <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #A1A1AA;">Toolbox</span>
+        <span style="font-size: 14px; color: #3F3F46;"><strong style="font-weight: 600; color: #0B0B0F;">Code</strong> Python, Java / Spring Boot, Git</span>
+        <span style="font-size: 14px; color: #3F3F46;"><strong style="font-weight: 600; color: #0B0B0F;">ML</strong> PyTorch, scikit-learn, BERT</span>
+        <span style="font-size: 14px; color: #3F3F46;"><strong style="font-weight: 600; color: #0B0B0F;">Data</strong> Neo4j / Cypher, Oracle, MySQL, SQL Server</span>
+        <span style="font-size: 14px; color: #3F3F46;"><strong style="font-weight: 600; color: #0B0B0F;">Modeling</strong> UML, ER, requirements</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work" class="wrap" style="background: #0B0B0F; color: #F6F6F3; padding-top: 112px; padding-bottom: 112px; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: -200px; right: -160px; width: 560px; height: 560px; border-radius: 50%; background: #2B59FF; opacity: 0.18; filter: blur(120px);" aria-hidden="true"></div>
+
+    <div style="position: relative; display: flex; flex-direction: column; gap: 14px; margin-bottom: 56px;">
+      <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #8EA2FF;">02 / Featured project</span>
+      <h2 class="xl-title" style="margin: 0; font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -0.035em;">BecaGraph</h2>
+      <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #D4D4D8; max-width: 760px;">A full-stack knowledge-graph platform that turns heterogeneous museum spreadsheets into one unified, uncertainty-aware and <span class="serif" style="color: #FFFFFF;">queryable graph.</span></p>
+    </div>
+
+    <div style="position: relative; display: flex; flex-wrap: wrap; gap: 48px; margin-bottom: 64px;">
+      <div style="flex: 1 1 300px; min-width: 0; max-width: 380px; display: flex; flex-direction: column; gap: 0;">
+        <div class="mono" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px;"><span style="color: #71717A;">ROLE</span><span style="text-align: right;">Designed &amp; developed end to end</span></div>
+        <div class="mono" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px;"><span style="color: #71717A;">CONTEXT</span><span style="text-align: right;">BECACO project, Leiden University</span></div>
+        <div class="mono" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px;"><span style="color: #71717A;">SCALE</span><span style="text-align: right;">530K+ objects, 11 museums</span></div>
+        <div class="mono" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 13px;"><span style="color: #71717A;">STACK</span><span style="text-align: right; line-height: 1.6;">Python, Django, GraphDB, SPARQL, RDF-Star, SHACL, LLMs, Transformers, WebGL</span></div>
+      </div>
+
+      <ol style="flex: 2 1 480px; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 36px;">
+        <li style="display: flex; flex-direction: column; gap: 8px;"><span class="mono" style="font-size: 12px; color: #8EA2FF;">01</span><strong style="font-size: 17px; font-weight: 600;">Semantic ETL pipeline</strong><span style="font-size: 14.5px; line-height: 1.6; color: #A1A1AA;">Exports from several collection systems mapped to CIDOC CRM, with LLM-assisted event extraction from free text and SHACL validation.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 8px;"><span class="mono" style="font-size: 12px; color: #8EA2FF;">02</span><strong style="font-size: 17px; font-weight: 600;">Uncertainty-aware modeling</strong><span style="font-size: 14.5px; line-height: 1.6; color: #A1A1AA;">Qualifiers such as "Maya?" or "ca. 1880 to 1910" kept as RDF-Star annotations instead of being lost.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 8px;"><span class="mono" style="font-size: 12px; color: #8EA2FF;">03</span><strong style="font-size: 17px; font-weight: 600;">Hybrid entity resolution</strong><span style="font-size: 14.5px; line-height: 1.6; color: #A1A1AA;">A RoBERTa Cross-Encoder combined with Token Sort Ratio merges name variants of the same collector across institutions.</span></li>
+        <li style="display: flex; flex-direction: column; gap: 8px;"><span class="mono" style="font-size: 12px; color: #8EA2FF;">04</span><strong style="font-size: 17px; font-weight: 600;">Ask the Graph</strong><span style="font-size: 14.5px; line-height: 1.6; color: #A1A1AA;">A Graph-RAG agent that writes SPARQL, runs it read-only and answers with evidence, showing every step.</span></li>
+      </ol>
+    </div>
+
+    <div style="position: relative; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 18px;">
+      <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #71717A;">Gallery</span>
+      <span style="font-size: 13px; color: #71717A;">Click a screen to open it full size</span>
+    </div>
+    <div class="gallery" style="position: relative;">
+      <a href="becagraph-dashboard.jpg" target="_blank" rel="noopener" class="shot g-wide" style="display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #17171C; border: 1px solid rgba(255,255,255,0.12);">
+        <span style="display: flex; gap: 6px; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.08);"><span style="width: 9px; height: 9px; border-radius: 50%; background: #3F3F46;"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3F3F46;"></span><span style="width: 9px; height: 9px; border-radius: 50%; background: #3F3F46;"></span></span>
+        <img src="becagraph-dashboard.jpg" alt="BecaGraph graph dashboard with charts per museum, decade and culture" style="width: 100%; min-height: 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block;">
+        <span style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 15px; font-weight: 600; color: #F6F6F3;">Graph dashboard</strong><span style="font-size: 13px; color: #A1A1AA;">Live statistics computed from the knowledge graph</span></span>
+      </a>
+      <a href="becagraph-galaxy-museums.jpg" target="_blank" rel="noopener" class="shot" style="display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #17171C; border: 1px solid rgba(255,255,255,0.12);">
+        <img src="becagraph-galaxy-museums.jpg" alt="Galaxy explorer: the collection grouped by museum" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center; display: block;">
+        <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; font-weight: 600; color: #F6F6F3;">Galaxy explorer</strong><span style="font-size: 12.5px; color: #A1A1AA;">531,447 objects in WebGL</span></span>
+      </a>
+      <a href="becagraph-chat.jpg" target="_blank" rel="noopener" class="shot" style="display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #17171C; border: 1px solid rgba(255,255,255,0.12);">
+        <img src="becagraph-chat.jpg" alt="Ask the Graph: an LLM assistant that writes and runs SPARQL" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block;">
+        <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; font-weight: 600; color: #F6F6F3;">Ask the Graph</strong><span style="font-size: 12.5px; color: #A1A1AA;">Plain language to SPARQL</span></span>
+      </a>
+      <a href="becagraph-home.jpg" target="_blank" rel="noopener" class="shot" style="display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #17171C; border: 1px solid rgba(255,255,255,0.12);">
+        <img src="becagraph-home.jpg" alt="BecaGraph home page" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; display: block;">
+        <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; font-weight: 600; color: #F6F6F3;">Platform home</strong><span style="font-size: 12.5px; color: #A1A1AA;">Pipeline and partners</span></span>
+      </a>
+      <a href="becagraph-workbench.jpg" target="_blank" rel="noopener" class="shot" style="display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #17171C; border: 1px solid rgba(255,255,255,0.12);">
+        <img src="becagraph-workbench.jpg" alt="Curator workbench of ready-made research queries" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block;">
+        <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; font-weight: 600; color: #F6F6F3;">Curator workbench</strong><span style="font-size: 12.5px; color: #A1A1AA;">Ready-made research queries</span></span>
+      </a>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2)); background: #F1F3F6;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 48px;">
-      <div>
-        <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Experience</span>
-        <h2 style="margin: 10px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em;">Professional journey</h2>
-      </div>
+  <section id="experience" class="wrap" style="padding-top: 112px; padding-bottom: 112px; display: flex; flex-wrap: wrap; gap: 48px;">
+    <div style="flex: 1 1 280px; min-width: 0; max-width: 360px; display: flex; flex-direction: column; gap: 14px;">
+      <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">03 / Experience</span>
+      <h2 class="xl-title" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em;">Research, teaching <span class="serif">&amp; infrastructure</span></h2>
     </div>
-
-    <div style="display: flex; flex-direction: column;">
-
-      <div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 28px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 180px; min-width: 160px; font-size: 14px; font-weight: 600; color: #6B7280;">Sep. 2024–Present</div>
-        <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
-          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">Postdoctoral Researcher</h3>
-          <div style="font-size: 14px; font-weight: 600; color: #2563EB;">Faculty of Archaeology, Leiden University · The Netherlands</div>
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4B5563; max-width: 760px;">Interdisciplinary research at the intersection of cultural heritage and AI: cultural data cleaning, Semantic ETL integration of museum and archaeological datasets, CIDOC CRM modeling, knowledge-graph visualization, and a Graph-RAG approach powered by LLMs.</p>
+    <div style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; padding: 28px 0; border-top: 1px solid rgba(11,11,15,0.12);">
+        <span class="mono" style="flex: 0 0 150px; font-size: 13px; color: #71717A; padding-top: 4px;">2024 to now</span>
+        <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.015em;">Postdoctoral Researcher</h3>
+          <span style="font-size: 14.5px; color: #2B59FF; font-weight: 500;">Faculty of Archaeology, Leiden University, The Netherlands</span>
+          <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.65; color: #52525B;">Data cleaning and Semantic ETL integration of museum and archaeological datasets, CIDOC CRM modeling, knowledge-graph visualization and a Graph-RAG approach powered by LLMs. Built the BecaGraph platform.</p>
         </div>
       </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 28px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 180px; min-width: 160px; font-size: 14px; font-weight: 600; color: #6B7280;">Dec. 2021–Sept. 2024</div>
-        <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
-          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">Lecturer, Department of Computer Science</h3>
-          <div style="font-size: 14px; font-weight: 600; color: #2563EB;">University of Saad Dahleb Blida 1 · Algeria</div>
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4B5563; max-width: 760px;">Taught Advanced Databases (relational, deductive, object-relational SQL3, NoSQL such as MongoDB and Neo4j), Mathematical Logic, Object-Oriented Programming, and Data Structures &amp; Algorithms.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; padding: 28px 0; border-top: 1px solid rgba(11,11,15,0.12);">
+        <span class="mono" style="flex: 0 0 150px; font-size: 13px; color: #71717A; padding-top: 4px;">2021 to 2024</span>
+        <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.015em;">Lecturer, Department of Computer Science</h3>
+          <span style="font-size: 14.5px; color: #2B59FF; font-weight: 500;">University of Saad Dahleb Blida 1, Algeria</span>
+          <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.65; color: #52525B;">Advanced Databases (relational, deductive, object-relational SQL3, NoSQL such as MongoDB and Neo4j), Mathematical Logic, Object-Oriented Programming, Data Structures &amp; Algorithms. Also part-time lecturer at four national schools: Higher Commercial Studies, Applied Statistics, Social Security and Transmission.</p>
         </div>
       </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 28px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 180px; min-width: 160px; font-size: 14px; font-weight: 600; color: #6B7280;">2021–2024</div>
-        <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
-          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">Part-Time Lecturer</h3>
-          <div style="font-size: 14px; font-weight: 600; color: #2563EB;">Various National Schools · Algeria</div>
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4B5563; max-width: 760px;">Information Systems &amp; Databases (School of Higher Commercial Studies, National School of Applied Statistics), Programming with Excel &amp; VBA (National School of Social Security), Data Structures &amp; Databases (National School of Transmission).</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; padding: 28px 0; border-top: 1px solid rgba(11,11,15,0.12); border-bottom: 1px solid rgba(11,11,15,0.12);">
+        <span class="mono" style="flex: 0 0 150px; font-size: 13px; color: #71717A; padding-top: 4px;">2017 to 2021</span>
+        <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 6px;">
+          <h3 style="margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -0.015em;">Head of the Data Center</h3>
+          <span style="font-size: 14.5px; color: #2B59FF; font-weight: 500;">School of Higher Commercial Studies (HEC), Algiers</span>
+          <p style="margin: 6px 0 0; font-size: 15px; line-height: 1.65; color: #52525B;">Managed and maintained the institution's data-center infrastructure, ensuring high availability and optimized digital resources.</p>
         </div>
       </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 24px; padding: 28px 0; border-top: 1px solid rgba(17,24,39,0.12); border-bottom: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 180px; min-width: 160px; font-size: 14px; font-weight: 600; color: #6B7280;">2017–Dec. 2021</div>
-        <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
-          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">Head of the Data Center</h3>
-          <div style="font-size: 14px; font-weight: 600; color: #2563EB;">School of Higher Commercial Studies (HEC) · Algiers, Algeria</div>
-          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4B5563; max-width: 760px;">Oversaw management and maintenance of the institution's data-center infrastructure, ensuring high availability and digital-resource optimization.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2));">
-    <div style="margin-bottom: 40px;">
-      <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Projects</span>
-      <h2 style="margin: 10px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em;">Platforms I have built</h2>
+  <!-- RESEARCH -->
+  <section id="research" class="wrap" style="background: #FFFFFF; padding-top: 112px; padding-bottom: 112px; border-top: 1px solid rgba(11,11,15,0.06);">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">04 / Research</span>
+        <h2 class="xl-title" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em;">Publications <span class="serif">&amp; supervision</span></h2>
+      </div>
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=uCCx51MAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" class="btn-ghost" style="border: 1px solid rgba(11,11,15,0.2); padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; color: #0B0B0F;">Full list on Google Scholar ↗</a>
     </div>
 
-    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; margin-bottom: 56px;">
-      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: #111827; color: #F8F9FB;">Designed &amp; developed</span>
-          <span style="font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(17,24,39,0.15); color: #4B5563;">BECACO project · Leiden University</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start;">
+      <div style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column;">
+        <!-- PUBS -->
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2026</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #0B0B0F; border-radius: 999px; padding: 3px 9px; width: fit-content;">Journal</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Convolutional autoencoder and embedding-based approach for deep clustering in knowledge graphs</h3><span style="font-size: 13.5px; color: #52525B;">Halima Aoula, Messaouda Fareh, <strong style="color: #0B0B0F;">Ishak Riali</strong></span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">Knowledge and Information Systems, 68(1), article 92</span></div>
         </div>
-        <h3 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.01em;">BecaGraph</h3>
-        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #374151; font-weight: 500;">A full-stack knowledge-graph platform that turns heterogeneous museum spreadsheets into one unified, uncertainty-aware and queryable graph.</p>
-        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #4B5563;">I built the whole pipeline end to end: ingestion of exports from eleven European museums, mapping to CIDOC CRM, actor deduplication across institutions, loading into a SPARQL triple store, and a web application where researchers explore, analyse and curate the data without writing a single query.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px;">
-          <div style="flex: 1 1 140px; padding: 14px 16px; border-radius: 12px; background: #F1F3F6;">
-            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: #2563EB;">530K+</div>
-            <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">objects integrated</div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2026</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #0B0B0F; border-radius: 999px; padding: 3px 9px; width: fit-content;">Journal</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Dynamic knowledge graph-based incremental customer deep embedded clustering</h3><span style="font-size: 13.5px; color: #52525B;">Halima Aoula, Messaouda Fareh, <strong style="color: #0B0B0F;">Ishak Riali</strong></span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">International Journal of Data Science and Analytics, 22(1), article 270</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2026</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #3F3F46; background: #EDEDEA; border-radius: 999px; padding: 3px 9px; width: fit-content;">Workshop</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Generation of Multi-Modal Narratives of Cultural Objects from Knowledge Graphs and LLMs</h3><span style="font-size: 13.5px; color: #52525B;"><strong style="color: #0B0B0F;">Ishak Riali</strong>, Raphaël Gerssen, Elizabeth Rodríguez Estrada, Gabriel Spautz Vieira, Martin Berger</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">3rd International Workshop on Semantic Digital Humanities (SemDH), co-located with ESWC</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2025</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #0B0B0F; border-radius: 999px; padding: 3px 9px; width: fit-content;">Journal</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">ProbFuzzOnto: A Fuzzy Ontology-Driven Uncertainty Approach Using Fuzzy Bayesian Networks</h3><span style="font-size: 13.5px; color: #52525B;"><strong style="color: #0B0B0F;">Ishak Riali</strong>, Messaouda Fareh, Fernando Bobillo</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">International Journal of Fuzzy Systems, 27(3), 680–700</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2025</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #3F3F46; background: #EDEDEA; border-radius: 999px; padding: 3px 9px; width: fit-content;">Conference</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Deep Semantic Clustering via Knowledge Graphs and BERT Embeddings for Customer Segmentation</h3><span style="font-size: 13.5px; color: #52525B;">Halima Aoula, Messaouda Fareh, <strong style="color: #0B0B0F;">Ishak Riali</strong></span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">International Conference on Intelligent Computer Systems and Data Science</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2023</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #0B0B0F; border-radius: 999px; padding: 3px 9px; width: fit-content;">Journal</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">A semantic-based approach for hepatitis C virus prediction and diagnosis using a fuzzy ontology and a fuzzy Bayesian network</h3><span style="font-size: 13.5px; color: #52525B;"><strong style="color: #0B0B0F;">Ishak Riali</strong>, Messaouda Fareh, Mohamed Chakib Ibnaissa, Mounir Bellil</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">Journal of Intelligent &amp; Fuzzy Systems, 44(2), 2381–2395</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2023</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #0B0B0F; border-radius: 999px; padding: 3px 9px; width: fit-content;">Journal</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Probabilistic reasoning for diagnosis prediction of Coronavirus disease based on probabilistic ontology</h3><span style="font-size: 13.5px; color: #52525B;">Messaouda Fareh, <strong style="color: #0B0B0F;">Ishak Riali</strong>, Hafsa Kherbache, Marwa Guemmouz</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">Computer Science and Information Systems, 20(3), 1109–1132</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2023</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #3F3F46; background: #EDEDEA; border-radius: 999px; padding: 3px 9px; width: fit-content;">Conference</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Fuzzy HealthIoT Ontology for Comorbidity Treatment</h3><span style="font-size: 13.5px; color: #52525B;">Ahlem Rhayem, <strong style="color: #0B0B0F;">Ishak Riali</strong>, Mohamed Ben Ahmed Mhiri, Messaouda Fareh, Raúl García-Castro, Faïez Gargouri</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">12th International Conference on Model and Data Engineering (MEDI), 228–241</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2019</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #0B0B0F; border-radius: 999px; padding: 3px 9px; width: fit-content;">Journal</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">Fuzzy Probabilistic Ontology Approach: A Hybrid Model for Handling Uncertain Knowledge in Ontologies</h3><span style="font-size: 13.5px; color: #52525B;"><strong style="color: #0B0B0F;">Ishak Riali</strong>, Messaouda Fareh, Hafida Bouarfa</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">International Journal on Semantic Web and Information Systems, 15(4), 1–20</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2019</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #3F3F46; background: #EDEDEA; border-radius: 999px; padding: 3px 9px; width: fit-content;">Conference</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">A Semantic Approach for Handling Probabilistic Knowledge of Fuzzy Ontologies</h3><span style="font-size: 13.5px; color: #52525B;"><strong style="color: #0B0B0F;">Ishak Riali</strong>, Messaouda Fareh, Hafida Bouarfa</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">21st International Conference on Enterprise Information Systems (ICEIS), 407–414</span></div>
+        </div>
+        <div class="pub" style="display: flex; flex-wrap: wrap; gap: 6px 24px; padding: 22px 0; border-top: 1px solid rgba(11,11,15,0.1); border-bottom: 1px solid rgba(11,11,15,0.1);">
+          <div class="mono" style="flex: 0 0 110px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #71717A;"><span>2017</span><span style="font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: #3F3F46; background: #EDEDEA; border-radius: 999px; padding: 3px 9px; width: fit-content;">Conference</span></div>
+          <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 5px;"><h3 style="margin: 0; font-size: 16.5px; font-weight: 600; line-height: 1.4; transition: color .2s;">FzMEBN: Toward a General Formalism of Fuzzy Multi-Entity Bayesian Networks for Representing and Reasoning with Uncertain Knowledge</h3><span style="font-size: 13.5px; color: #52525B;"><strong style="color: #0B0B0F;">Ishak Riali</strong>, Messaouda Fareh, Hafida Bouarfa</span><span style="font-size: 13.5px; color: #71717A; font-style: italic;">International Conference on Enterprise Information Systems (ICEIS), 520–528</span></div>
+        </div>
+      </div>
+
+      <!-- SIDE: supervision, education, certification -->
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px; position: sticky; top: 90px;">
+        <div style="background: #0B0B0F; color: #F6F6F3; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+          <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #8EA2FF;">Supervision</span>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <span class="mono" style="font-size: 12px; color: #A1A1AA;">2026 · Ph.D. · Co-supervisor</span>
+            <strong style="font-size: 16px; font-weight: 600; line-height: 1.4;">Semantic Learning for Knowledge Discovery from Linked Data</strong>
+            <span style="font-size: 13.5px; line-height: 1.6; color: #A1A1AA;">Doctoral thesis of Halima Aoula, University of Blida 1, with Prof. Messaouda Fareh. Deep clustering in knowledge graphs (RDF2Vec and convolutional autoencoders), interpretable customer segmentation (BERT, DEC, SHAP, LIME) and incremental clustering on dynamic graphs with SHACL.</span>
           </div>
-          <div style="flex: 1 1 140px; padding: 14px 16px; border-radius: 12px; background: #F1F3F6;">
-            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: #2563EB;">11</div>
-            <div style="font-size: 12px; color: #6B7280; margin-top: 2px;">museums, one graph</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 14px; display: flex; flex-direction: column; gap: 6px;">
+            <span class="mono" style="font-size: 12px; color: #A1A1AA;">2016–2024 · 12 Master's theses</span>
+            <span style="font-size: 13.5px; line-height: 1.6; color: #D4D4D8;">Probabilistic and fuzzy ontologies, uncertainty in IoT, linked-data entity resolution, comorbidity prediction and medical-diagnosis decision support.</span>
           </div>
         </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;">
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">Python</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">Django</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">GraphDB</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">SPARQL 1.1</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">RDF-Star</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">CIDOC CRM</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">SHACL</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">LLMs (Claude, GPT)</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">Transformers</span>
-          <span style="font-size: 12px; font-weight: 500; padding: 5px 10px; border-radius: 6px; background: #F1F3F6; color: #374151;">WebGL</span>
+
+        <div style="background: #F6F6F3; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px;">
+          <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">Education</span>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <strong style="font-size: 15px; font-weight: 600;">Ph.D. in Computer Science</strong>
+            <span style="font-size: 13.5px; color: #52525B; line-height: 1.55;">University of Blida 1, 2016–2020. <em>Modeling Uncertain Knowledge in the Semantic Web.</em></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <strong style="font-size: 15px; font-weight: 600;">Master's in Software Engineering</strong>
+            <span style="font-size: 13.5px; color: #52525B; line-height: 1.55;">University of Blida 1, 2013–2015. <em>Brain Tumor Segmentation: A Comparative Study.</em></span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <strong style="font-size: 15px; font-weight: 600;">Bachelor's in Computer Science</strong>
+            <span style="font-size: 13.5px; color: #52525B; line-height: 1.55;">University of Blida 1, 2011–2013. <em>An e-recruitment web platform.</em></span>
+          </div>
+        </div>
+
+        <div style="border: 1px solid rgba(11,11,15,0.1); border-radius: 24px; padding: 24px 28px; display: flex; flex-direction: column; gap: 6px;">
+          <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">Certification · 2025</span>
+          <strong style="font-size: 15px; font-weight: 600; line-height: 1.4;">NVIDIA: Building Transformer-Based Natural Language Processing Applications</strong>
         </div>
       </div>
-      <div style="flex: 1 1 420px; min-width: 0;">
-        <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; font-size: 14.5px; line-height: 1.6; color: #374151;">
-          <li style="display: flex; gap: 10px;"><span style="color: #2563EB; font-weight: 700;">01</span><span><strong>Semantic ETL pipeline.</strong> Excel exports from several collection management systems mapped automatically to CIDOC CRM, with LLM-assisted extraction of provenance events from free-text notes and SHACL validation before loading.</span></li>
-          <li style="display: flex; gap: 10px;"><span style="color: #2563EB; font-weight: 700;">02</span><span><strong>Uncertainty-aware modeling.</strong> Curatorial qualifiers such as "Maya?" or "ca. 1880 to 1910" are kept as RDF-Star annotations instead of being lost or flattened.</span></li>
-          <li style="display: flex; gap: 10px;"><span style="color: #2563EB; font-weight: 700;">03</span><span><strong>Hybrid entity resolution.</strong> A Cross-Encoder (RoBERTa) combined with Token Sort Ratio merges name variants of the same collector across institutions.</span></li>
-          <li style="display: flex; gap: 10px;"><span style="color: #2563EB; font-weight: 700;">04</span><span><strong>Ask the Graph.</strong> An LLM agent (Graph-RAG) that writes SPARQL, runs it read-only on the graph and answers with evidence, showing every step.</span></li>
-          <li style="display: flex; gap: 10px;"><span style="color: #2563EB; font-weight: 700;">05</span><span><strong>Visual exploration.</strong> A WebGL "galaxy" of the whole collection, provenance chain graphs, actor networks, analytics dashboards and a curator workbench of ready-made queries.</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Gallery -->
-    <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
-      <h3 style="margin: 0; font-size: 18px; font-weight: 700;">Gallery</h3>
-      <span style="font-size: 12.5px; color: #6B7280;">Click an image to open it full size</span>
-    </div>
-    <div class="gallery">
-        <a href="becagraph-dashboard.jpg" target="_blank" rel="noopener" class="g-item g-wide" style="display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 6px 20px rgba(17,24,39,0.06);">
-          <img src="becagraph-dashboard.jpg" alt="BecaGraph: Graph dashboard" style="width: 100%; flex: 1 1 auto; min-height: 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block; border-bottom: 1px solid rgba(17,24,39,0.08);">
-          <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; color: #111827;">Graph dashboard</strong><span style="font-size: 12.5px; color: #6B7280; line-height: 1.5;">Objects per museum, acquisitions per decade, top cultures and documentation completeness, computed live from the graph.</span></span>
-        </a>
-        <a href="becagraph-galaxy-museums.jpg" target="_blank" rel="noopener" class="g-item " style="display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 6px 20px rgba(17,24,39,0.06);">
-          <img src="becagraph-galaxy-museums.jpg" alt="BecaGraph: Galaxy explorer" style="width: 100%; flex: 1 1 auto; min-height: 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block; border-bottom: 1px solid rgba(17,24,39,0.08);">
-          <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; color: #111827;">Galaxy explorer</strong><span style="font-size: 12.5px; color: #6B7280; line-height: 1.5;">531,447 objects as a WebGL starfield, here grouped by museum.</span></span>
-        </a>
-        <a href="becagraph-chat.jpg" target="_blank" rel="noopener" class="g-item " style="display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 6px 20px rgba(17,24,39,0.06);">
-          <img src="becagraph-chat.jpg" alt="BecaGraph: Ask the Graph" style="width: 100%; flex: 1 1 auto; min-height: 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block; border-bottom: 1px solid rgba(17,24,39,0.08);">
-          <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; color: #111827;">Ask the Graph</strong><span style="font-size: 12.5px; color: #6B7280; line-height: 1.5;">Questions in plain language, answered with SPARQL and evidence.</span></span>
-        </a>
-        <a href="becagraph-home.jpg" target="_blank" rel="noopener" class="g-item " style="display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 6px 20px rgba(17,24,39,0.06);">
-          <img src="becagraph-home.jpg" alt="BecaGraph: Platform home" style="width: 100%; flex: 1 1 auto; min-height: 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block; border-bottom: 1px solid rgba(17,24,39,0.08);">
-          <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; color: #111827;">Platform home</strong><span style="font-size: 12.5px; color: #6B7280; line-height: 1.5;">Overview of the pipeline and the partner institutions.</span></span>
-        </a>
-        <a href="becagraph-workbench.jpg" target="_blank" rel="noopener" class="g-item " style="display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; background: #FFFFFF; border: 1px solid rgba(17,24,39,0.10); box-shadow: 0 6px 20px rgba(17,24,39,0.06);">
-          <img src="becagraph-workbench.jpg" alt="BecaGraph: Curator workbench" style="width: 100%; flex: 1 1 auto; min-height: 0; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; display: block; border-bottom: 1px solid rgba(17,24,39,0.08);">
-          <span style="padding: 12px 16px 14px; display: flex; flex-direction: column; gap: 2px;"><strong style="font-size: 14px; color: #111827;">Curator workbench</strong><span style="font-size: 12.5px; color: #6B7280; line-height: 1.5;">Ready-made research queries, no SPARQL needed.</span></span>
-        </a>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2));">
-    <div style="margin-bottom: 48px;">
-      <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Skills</span>
-      <h2 style="margin: 10px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em;">Core competencies</h2>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Semantic Web &amp; Knowledge Graphs</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">RDF / RDFS / OWL</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">SPARQL</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Ontology Engineering</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Protégé</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Linked Open Data</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Fuzzy &amp; Probabilistic Ontologies</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">AI / ML on Knowledge Graphs</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">KG Embeddings (TransE, DistMult, RotatE)</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Graph Neural Networks</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">BERT / KG-BERT</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Bayesian Networks</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Graph-RAG &amp; LLMs</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Deep Clustering &amp; Representation Learning</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Convolutional Autoencoders</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Deep Embedded Clustering</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Dynamic / Incremental Clustering</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Customer Segmentation</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">BERT-Based Semantic Clustering</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Generative AI &amp; Multi-Modal Systems</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">LLM-Based Narrative Generation</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Text-to-Speech Pipelines</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Prompt Engineering</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Multi-Modal Content Generation</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Programming &amp; Tools</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Python</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Java / Spring Boot</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">PyTorch / scikit-learn</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">REST APIs</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Git</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Databases &amp; Storage</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Neo4j / Cypher</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">MongoDB</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Oracle / MySQL / SQL Server</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">GraphQL</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">ETL Tools</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Modeling &amp; Methods</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">UML</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Entity-Relationship Modeling</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">CIDOC CRM</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Requirements Engineering</span>
-        </div>
-      </div>
-
-      <div style="background: #F1F3F6; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Languages &amp; Soft Skills</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Arabic (Native)</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">French (Bilingual)</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">English (Technical)</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Teaching &amp; Supervision</span>
-          <span style="background: #fff; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: #374151;">Technical Writing</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2)); background: #F1F3F6;">
-    <div style="margin-bottom: 48px;">
-      <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Education</span>
-      <h2 style="margin: 10px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em;">Academic background</h2>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;">
-
-      <div style="background: #fff; border-radius: 16px; padding: 30px; display: flex; flex-direction: column; gap: 10px;">
-        <span style="font-size: 13px; font-weight: 600; color: #6B7280;">Feb. 2016–Jul. 2020</span>
-        <h3 style="margin: 0; font-size: 18px; font-weight: 700;">Ph.D. in Computer Science</h3>
-        <div style="font-size: 14px; font-weight: 600; color: #2563EB;">University of Blida 1, Algeria</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #4B5563;">Option: Data Science &amp; Computing. Thesis: <em>Modeling Uncertain Knowledge in the Semantic Web</em>: uncertainty modeling in knowledge representation and reasoning.</p>
-      </div>
-
-      <div style="background: #fff; border-radius: 16px; padding: 30px; display: flex; flex-direction: column; gap: 10px;">
-        <span style="font-size: 13px; font-weight: 600; color: #6B7280;">2013–2015</span>
-        <h3 style="margin: 0; font-size: 18px; font-weight: 700;">Master's Degree in Computer Science</h3>
-        <div style="font-size: 14px; font-weight: 600; color: #2563EB;">University of Blida 1, Algeria</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #4B5563;">Option: Software Engineering. Thesis: <em>Brain Tumor Segmentation: A Comparative Study</em>: comparative image-processing &amp; ML techniques.</p>
-      </div>
-
-      <div style="background: #fff; border-radius: 16px; padding: 30px; display: flex; flex-direction: column; gap: 10px;">
-        <span style="font-size: 13px; font-weight: 600; color: #6B7280;">2011–2013</span>
-        <h3 style="margin: 0; font-size: 18px; font-weight: 700;">Bachelor's Degree in Computer Science</h3>
-        <div style="font-size: 14px; font-weight: 600; color: #2563EB;">University of Blida 1, Algeria</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #4B5563;">Thesis: <em>Development of a Website for E-Recruitment</em>: full-stack job-matching platform.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- RESEARCH / SUPERVISION / CERTS -->
-  <section id="research" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2)); display: flex; flex-wrap: wrap; gap: 56px;">
-
-    <div style="flex: 999 1 460px; min-width: 0;">
-      <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Research &amp; supervision</span>
-      <h2 style="margin: 10px 0 24px; font-size: 34px; font-weight: 700; letter-spacing: -0.01em;">Supervised research</h2>
-      <p style="margin: 0 0 24px; font-size: 15.5px; line-height: 1.7; color: #4B5563; max-width: 760px;">Co-supervision of a doctoral thesis and supervision or co-supervision of twelve Master's theses at the University of Blida 1 (2016–2026), spanning deep clustering on knowledge graphs, probabilistic and fuzzy ontologies, uncertainty modeling in the Internet of Things, linked-data entity resolution, and medical-diagnosis decision support.</p>
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(17,24,39,0.1);">
-          <span style="font-size: 13px; font-weight: 700; color: #2563EB; min-width: 76px;">2026<br><span style="font-size: 11px; font-weight: 700; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; display: inline-block; margin-top: 6px; letter-spacing: 0.04em;">PH.D.</span></span>
-          <span style="font-size: 14.5px; color: #374151; line-height: 1.5; display: flex; flex-direction: column; gap: 4px;"><strong style="color: #111827;">Semantic Learning for Knowledge Discovery from Linked Data</strong><span>Doctoral thesis of Halima Aoula, University of Blida 1. Co-supervisor, with Prof. Messaouda Fareh as supervisor. Semantic deep clustering in knowledge graphs (RDF2Vec embeddings refined by a convolutional autoencoder), interpretable customer segmentation with BERT, Deep Embedded Clustering, SHAP and LIME, and incremental clustering on dynamic knowledge graphs with SHACL validation.</span></span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(17,24,39,0.1);">
-          <span style="font-size: 13px; font-weight: 700; color: #2563EB; min-width: 76px;">2022–24</span>
-          <span style="font-size: 14.5px; color: #374151; line-height: 1.5;">Comorbidity prediction and entity classification in large-scale linked data using probabilistic ontologies and deep embeddings.</span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(17,24,39,0.1);">
-          <span style="font-size: 13px; font-weight: 700; color: #2563EB; min-width: 76px;">2020–22</span>
-          <span style="font-size: 14.5px; color: #374151; line-height: 1.5;">Fuzzy Bayesian networks and probabilistic ontologies for medical diagnosis support, including IoT and smart-agriculture contexts.</span>
-        </div>
-        <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(17,24,39,0.1); border-bottom: 1px solid rgba(17,24,39,0.1);">
-          <span style="font-size: 13px; font-weight: 700; color: #2563EB; min-width: 76px;">2016–17</span>
-          <span style="font-size: 14.5px; color: #374151; line-height: 1.5;">Co-supervised probabilistic inference on fuzzy ontologies and object-oriented Bayesian networks for the Semantic Web.</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="flex: 1 1 280px; min-width: 240px; display: flex; flex-direction: column; gap: 16px;">
-      <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Certifications</span>
-      <div style="background: #111827; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 6px;">
-        <span style="font-size: 12.5px; font-weight: 600; color: #9CA3AF;">2025 · NVIDIA</span>
-        <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #F8F9FB; line-height: 1.4;">Building Transformer-Based Natural Language Processing Applications</h3>
-      </div>
-      <div style="border: 1px solid rgba(17,24,39,0.12); border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 10px;">
-        <h3 style="margin: 0; font-size: 15px; font-weight: 700;">Links</h3>
-        <a href="https://scholar.google.com/citations?hl=en&amp;user=uCCx51MAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" style="font-size: 14px; font-weight: 600; color: #2563EB;">Google Scholar ↗</a>
-        <a href="https://linkedin.com" style="font-size: 14px; font-weight: 600; color: #2563EB;">LinkedIn: Ishak Riali ↗</a>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2)); background: #F1F3F6;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 48px;">
-      <div>
-        <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Publications</span>
-        <h2 style="margin: 10px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em;">Research output</h2>
-      </div>
-      <a href="https://scholar.google.com/citations?hl=en&amp;user=uCCx51MAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" style="font-size: 14px; font-weight: 600; color: #2563EB; white-space: nowrap;">Full list on Google Scholar ↗</a>
-    </div>
-
-    <div style="display: flex; flex-direction: column;">
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2026</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; width: fit-content;">Journal</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Convolutional autoencoder and embedding-based approach for deep clustering in knowledge graphs</h3>
-          <div style="font-size: 13.5px; color: #6B7280;">Halima Aoula, Messaouda Fareh, <strong>Ishak Riali</strong></div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">Knowledge and Information Systems, 68(1), article 92</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2026</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; width: fit-content;">Journal</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Dynamic knowledge graph-based incremental customer deep embedded clustering</h3>
-          <div style="font-size: 13.5px; color: #6B7280;">Halima Aoula, Messaouda Fareh, <strong>Ishak Riali</strong></div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">International Journal of Data Science and Analytics, 22(1), article 270</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2026</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #4B5563; background: #E5E7EB; border-radius: 999px; padding: 2px 8px; width: fit-content;">Workshop</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Generation of Multi-Modal Narratives of Cultural Objects from Knowledge Graphs and LLMs</h3>
-          <div style="font-size: 13.5px; color: #6B7280;"><strong>Ishak Riali</strong>, Raphaël Gerssen, Elizabeth Rodríguez Estrada, Gabriel Spautz Vieira, Martin Berger</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">3rd International Workshop on Semantic Digital Humanities (SemDH), co-located with ESWC</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2025</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; width: fit-content;">Journal</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">ProbFuzzOnto: A Fuzzy Ontology-Driven Uncertainty Approach Using Fuzzy Bayesian Networks</h3>
-          <div style="font-size: 13.5px; color: #6B7280;"><strong>Ishak Riali</strong>, Messaouda Fareh, Fernando Bobillo</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">International Journal of Fuzzy Systems, 27(3), 680–700</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2025</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #4B5563; background: #E5E7EB; border-radius: 999px; padding: 2px 8px; width: fit-content;">Conference</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Deep Semantic Clustering via Knowledge Graphs and BERT Embeddings for Customer Segmentation</h3>
-          <div style="font-size: 13.5px; color: #6B7280;">Halima Aoula, Messaouda Fareh, <strong>Ishak Riali</strong></div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">International Conference on Intelligent Computer Systems and Data Science</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2023</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; width: fit-content;">Journal</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">A semantic-based approach for hepatitis C virus prediction and diagnosis using a fuzzy ontology and a fuzzy Bayesian network</h3>
-          <div style="font-size: 13.5px; color: #6B7280;"><strong>Ishak Riali</strong>, Messaouda Fareh, Mohamed Chakib Ibnaissa, Mounir Bellil</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">Journal of Intelligent &amp; Fuzzy Systems, 44(2), 2381–2395</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2023</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; width: fit-content;">Journal</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Probabilistic reasoning for diagnosis prediction of Coronavirus disease based on probabilistic ontology</h3>
-          <div style="font-size: 13.5px; color: #6B7280;">Messaouda Fareh, <strong>Ishak Riali</strong>, Hafsa Kherbache, Marwa Guemmouz</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">Computer Science and Information Systems, 20(3), 1109–1132</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2023</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #4B5563; background: #E5E7EB; border-radius: 999px; padding: 2px 8px; width: fit-content;">Conference</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Fuzzy HealthIoT Ontology for Comorbidity Treatment</h3>
-          <div style="font-size: 13.5px; color: #6B7280;">Ahlem Rhayem, <strong>Ishak Riali</strong>, Mohamed Ben Ahmed Mhiri, Messaouda Fareh, Raúl García-Castro, Faïez Gargouri</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">12th International Conference on Model and Data Engineering (MEDI), 228–241</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2019</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; background: #111827; border-radius: 999px; padding: 2px 8px; width: fit-content;">Journal</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">Fuzzy Probabilistic Ontology Approach: A Hybrid Model for Handling Uncertain Knowledge in Ontologies</h3>
-          <div style="font-size: 13.5px; color: #6B7280;"><strong>Ishak Riali</strong>, Messaouda Fareh, Hafida Bouarfa</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">International Journal on Semantic Web and Information Systems, 15(4), 1–20</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2019</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #4B5563; background: #E5E7EB; border-radius: 999px; padding: 2px 8px; width: fit-content;">Conference</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">A Semantic Approach for Handling Probabilistic Knowledge of Fuzzy Ontologies</h3>
-          <div style="font-size: 13.5px; color: #6B7280;"><strong>Ishak Riali</strong>, Messaouda Fareh, Hafida Bouarfa</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">21st International Conference on Enterprise Information Systems (ICEIS), 407–414</div>
-        </div>
-      </div>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 22px 0; border-top: 1px solid rgba(17,24,39,0.12); border-bottom: 1px solid rgba(17,24,39,0.12);">
-        <div style="flex: 1 1 90px; min-width: 70px; display: flex; flex-direction: column; gap: 6px;">
-          <span style="font-size: 14px; font-weight: 700; color: #2563EB;">2017</span>
-          <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #4B5563; background: #E5E7EB; border-radius: 999px; padding: 2px 8px; width: fit-content;">Conference</span>
-        </div>
-        <div style="flex: 999 1 420px; min-width: 0;">
-          <h3 style="margin: 0 0 4px; font-size: 16px; font-weight: 700; line-height: 1.4;">FzMEBN: Toward a General Formalism of Fuzzy Multi-Entity Bayesian Networks for Representing and Reasoning with Uncertain Knowledge</h3>
-          <div style="font-size: 13.5px; color: #6B7280;"><strong>Ishak Riali</strong>, Messaouda Fareh, Hafida Bouarfa</div>
-          <div style="font-size: 13.5px; color: #6B7280; font-style: italic;">International Conference on Enterprise Information Systems (ICEIS), 520–528</div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" style="width: 100%; box-sizing: border-box; padding: 88px max(64px, calc((100% - 1200px) / 2)); background: #111827; color: #F8F9FB; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: space-between;">
-    <div style="flex: 999 1 380px; min-width: 0; max-width: 520px;">
-      <span style="font-size: 13px; font-weight: 600; color: #2563EB; letter-spacing: 0.04em; text-transform: uppercase;">Contact</span>
-      <h2 style="margin: 10px 0 14px; font-size: 32px; font-weight: 700; letter-spacing: -0.01em;">Let's talk research, data or collaboration</h2>
-      <p style="margin: 0; font-size: 15.5px; line-height: 1.7; color: #9CA3AF;">Open to research collaborations and consulting projects on knowledge graphs, Graph-RAG, ETL pipelines, semantic data integration and applied AI, across any domain.</p>
+  <section id="contact" class="wrap" style="background: #0B0B0F; color: #F6F6F3; padding-top: 120px; padding-bottom: 64px; position: relative; overflow: hidden;">
+    <div style="position: absolute; bottom: -260px; left: -160px; width: 620px; height: 620px; border-radius: 50%; background: #2B59FF; opacity: 0.2; filter: blur(130px);" aria-hidden="true"></div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 28px; max-width: 980px;">
+      <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #8EA2FF;">05 / Contact</span>
+      <h2 class="xl-title" style="margin: 0; font-size: 72px; line-height: 1; font-weight: 600; letter-spacing: -0.035em;">Have messy data and a hard question? <span class="serif" style="color: #8EA2FF;">Let's talk.</span></h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #A1A1AA; max-width: 640px;">Open to research collaborations and consulting projects on knowledge graphs, Graph-RAG, ETL pipelines, semantic data integration and applied AI, across any domain.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
+        <a href="mailto:ishakriali@gmail.com" style="background: #F6F6F3; color: #0B0B0F; padding: 16px 26px; border-radius: 999px; font-size: 15.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+          ishakriali@gmail.com
+        </a>
+        <a href="tel:+31623052467" class="contact-link" style="border: 1px solid rgba(255,255,255,0.25); color: #F6F6F3; padding: 16px 26px; border-radius: 999px; font-size: 15.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>
+          +31 6 23 05 24 67
+        </a>
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=uCCx51MAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" class="contact-link" style="border: 1px solid rgba(255,255,255,0.25); color: #F6F6F3; padding: 16px 26px; border-radius: 999px; font-size: 15.5px; font-weight: 600;">Google Scholar ↗</a>
+      </div>
     </div>
-    <div style="flex: 1 1 260px; min-width: 240px; display: flex; flex-direction: column; gap: 14px;">
-      <a href="mailto:ishakriali@gmail.com" style="display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; border: 1px solid rgba(248,249,251,0.18); border-radius: 12px; padding: 14px 18px;">
-        ✉ ishakriali@gmail.com
-      </a>
-      <div style="display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; border: 1px solid rgba(248,249,251,0.18); border-radius: 12px; padding: 14px 18px;">
-        ☎ +31 6 23 05 24 67
-      </div>
-      <div style="display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; border: 1px solid rgba(248,249,251,0.18); border-radius: 12px; padding: 14px 18px;">
-        ⚲ Leiden, The Netherlands
-      </div>
+    <div class="mono" style="position: relative; margin-top: 96px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 12.5px; color: #71717A;">
+      <span>© 2026 Ishak Riali</span>
+      <span>Leiden, The Netherlands</span>
     </div>
   </section>
-
-  <footer style="width: 100%; box-sizing: border-box; padding: 24px 64px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; background: #111827; color: #9CA3AF; font-size: 12.5px; border-top: 1px solid rgba(248,249,251,0.08);">
-    <span>© 2026 Ishak Riali. All rights reserved.</span>
-    <span>Leiden, The Netherlands</span>
-  </footer>
 
 </div>
 </body>

@@ -33,6 +33,9 @@
   .shot:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.35) !important; color: #fff; }
   .pub:hover h3 { color: #2B59FF; }
   .contact-link:hover { color: #fff; border-color: #fff !important; }
+  .to-top { position: fixed; right: 24px; bottom: 24px; z-index: 60; width: 48px; height: 48px; border-radius: 50%; background: #0B0B0F; color: #F6F6F3; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px rgba(11,11,15,0.25); border: 1px solid rgba(255,255,255,0.15); transition: transform .2s ease, background .2s ease; }
+  .to-top:hover { background: #2B59FF; color: #fff; transform: translateY(-3px); }
+  html { scroll-behavior: smooth; }
   @media (max-width: 960px) {
     .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -44,7 +47,7 @@
     .wrap { padding-left: 20px; padding-right: 20px; }
     .bento, .gallery { grid-template-columns: 1fr; }
     .bento .span2, .gallery .g-wide { grid-column: auto; }
-    .hero-title { font-size: 40px !important; }
+    .hero-title { font-size: 34px !important; }
     .xl-title { font-size: 34px !important; }
   }
 </style>
@@ -60,7 +63,7 @@
     </a>
     <div class="navlinks" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
       <a href="#work">Work</a>
-      <a href="#expertise">Expertise</a>
+      <a href="#expertise">Competencies</a>
       <a href="#experience">Experience</a>
       <a href="#research">Research</a>
       <a href="#contact">Contact</a>
@@ -79,7 +82,7 @@
         <span style="color: #A1A1AA;">/</span>
         <span>Open to collaborations</span>
       </div>
-      <h1 class="hero-title" style="margin: 0; font-size: 72px; line-height: 1.02; font-weight: 600; letter-spacing: -0.035em; max-width: 1100px;">I build <span class="serif" style="color: #2B59FF;">knowledge graphs</span>, <span style="white-space: nowrap;">Graph-RAG</span> systems and ETL pipelines that turn messy, uncertain data into <span class="serif">structured knowledge.</span></h1>
+      <h1 class="hero-title" style="margin: 0; font-size: 48px; line-height: 1.12; font-weight: 600; letter-spacing: -0.03em; max-width: 920px;">I build <span class="serif" style="color: #2B59FF;">knowledge graphs</span>, <span style="white-space: nowrap;">Graph-RAG</span> systems and ETL pipelines that turn messy, uncertain data into <span class="serif">structured knowledge.</span></h1>
     </div>
 
     <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
@@ -115,25 +118,14 @@
     </div>
   </section>
 
-  <!-- PUBLISHED IN -->
-  <section class="wrap" style="padding-top: 26px; padding-bottom: 26px; border-top: 1px solid rgba(11,11,15,0.08); border-bottom: 1px solid rgba(11,11,15,0.08); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 36px;">
-    <span class="mono" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #A1A1AA;">Published in</span>
-    <span style="font-size: 15px; font-weight: 600; color: #52525B;">Knowledge and Information Systems</span>
-    <span style="font-size: 15px; font-weight: 600; color: #52525B;">Int. Journal of Fuzzy Systems</span>
-    <span style="font-size: 15px; font-weight: 600; color: #52525B;">IJSWIS</span>
-    <span style="font-size: 15px; font-weight: 600; color: #52525B;">J. of Intelligent &amp; Fuzzy Systems</span>
-    <span style="font-size: 15px; font-weight: 600; color: #52525B;">ESWC · SemDH</span>
-    <span style="font-size: 15px; font-weight: 600; color: #52525B;">ICEIS</span>
-  </section>
-
   <!-- EXPERTISE -->
   <section id="expertise" class="wrap" style="padding-top: 112px; padding-bottom: 112px;">
     <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px;">
       <div style="display: flex; flex-direction: column; gap: 14px; max-width: 720px;">
-        <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">01 / Expertise</span>
-        <h2 class="xl-title" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em;">What I <span class="serif">build</span> for you</h2>
+        <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #2B59FF;">01 / Competencies</span>
+        <h2 class="xl-title" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em;">Core <span class="serif">competencies</span></h2>
       </div>
-      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #52525B; max-width: 400px;">From raw spreadsheets and databases to systems people can question in plain language.</p>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #52525B; max-width: 400px;">Research depth and hands-on engineering, built over a Ph.D., five years of teaching and a postdoc.</p>
     </div>
 
     <div class="bento">
@@ -143,28 +135,28 @@
           <span class="mono" style="font-size: 12px; color: #A1A1AA;">CORE</span>
         </div>
         <h3 style="margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em;">Knowledge graphs &amp; semantic integration</h3>
-        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: #D4D4D8; max-width: 620px;">I design ontologies and turn scattered, inconsistent sources into one connected, queryable graph, with validation and uncertainty kept explicit.</p>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: #D4D4D8; max-width: 620px;">Ontology engineering and semantic integration of scattered, inconsistent sources into connected, queryable graphs, with validation and uncertainty kept explicit.</p>
         <div class="mono" style="margin-top: auto; font-size: 12.5px; color: #A1A1AA; line-height: 1.8;">RDF · OWL · SPARQL · SHACL · RDF-Star · CIDOC CRM · Neo4j · GraphDB · Protégé</div>
       </div>
 
       <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M21 4v5h-5"></path><path d="M9 12h6"></path><path d="M12 9v6"></path></svg>
         <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">Graph-RAG &amp; LLM systems</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">LLM agents that write and run graph queries, answer with evidence, and generate narratives or audio from structured data.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Combining LLMs with knowledge graphs: agents that write and run graph queries, evidence-based answers, and narrative or audio generation from structured data.</p>
         <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">Text-to-SPARQL · Prompting · TTS · Multi-modal</div>
       </div>
 
       <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg>
         <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">ETL &amp; data pipelines</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Cleaning, mapping and deduplicating heterogeneous data, including LLM-assisted extraction from free text and entity resolution.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Cleaning, mapping and deduplication of heterogeneous data, LLM-assisted extraction from free text, and entity resolution.</p>
         <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">Python · SQL · MongoDB · GraphQL · REST</div>
       </div>
 
       <div class="card" style="background: #FFFFFF; border: 1px solid rgba(11,11,15,0.08); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B59FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="3"></circle><circle cx="17" cy="9" r="2"></circle><circle cx="9" cy="17" r="2"></circle><circle cx="17" cy="17" r="3"></circle></svg>
         <h3 style="margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.015em;">Machine learning on graphs</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Embeddings, graph neural networks and deep clustering to discover structure, segment customers and classify entities.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; color: #52525B;">Knowledge-graph embeddings, graph neural networks and deep clustering for structure discovery, customer segmentation and entity classification.</p>
         <div class="mono" style="margin-top: auto; font-size: 12px; color: #71717A; line-height: 1.8;">PyTorch · TransE · GNN · KG-BERT · DEC</div>
       </div>
 
@@ -191,7 +183,7 @@
 
     <div style="position: relative; display: flex; flex-direction: column; gap: 14px; margin-bottom: 56px;">
       <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #8EA2FF;">02 / Featured project</span>
-      <h2 class="xl-title" style="margin: 0; font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -0.035em;">BecaGraph</h2>
+      <h2 class="xl-title" style="margin: 0; font-size: 52px; line-height: 1; font-weight: 600; letter-spacing: -0.035em;">BecaGraph</h2>
       <p style="margin: 0; font-size: 20px; line-height: 1.55; color: #D4D4D8; max-width: 760px;">A full-stack knowledge-graph platform that turns heterogeneous museum spreadsheets into one unified, uncertainty-aware and <span class="serif" style="color: #FFFFFF;">queryable graph.</span></p>
     </div>
 
@@ -377,7 +369,7 @@
     <div style="position: absolute; bottom: -260px; left: -160px; width: 620px; height: 620px; border-radius: 50%; background: #2B59FF; opacity: 0.2; filter: blur(130px);" aria-hidden="true"></div>
     <div style="position: relative; display: flex; flex-direction: column; gap: 28px; max-width: 980px;">
       <span class="mono" style="font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: #8EA2FF;">05 / Contact</span>
-      <h2 class="xl-title" style="margin: 0; font-size: 72px; line-height: 1; font-weight: 600; letter-spacing: -0.035em;">Have messy data and a hard question? <span class="serif" style="color: #8EA2FF;">Let's talk.</span></h2>
+      <h2 class="xl-title" style="margin: 0; font-size: 56px; line-height: 1.05; font-weight: 600; letter-spacing: -0.035em;">Have messy data and a hard question? <span class="serif" style="color: #8EA2FF;">Let's talk.</span></h2>
       <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #A1A1AA; max-width: 640px;">Open to research collaborations and consulting projects on knowledge graphs, Graph-RAG, ETL pipelines, semantic data integration and applied AI, across any domain.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
         <a href="mailto:ishakriali@gmail.com" style="background: #F6F6F3; color: #0B0B0F; padding: 16px 26px; border-radius: 999px; font-size: 15.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px;">
@@ -396,6 +388,10 @@
       <span>Leiden, The Netherlands</span>
     </div>
   </section>
+
+  <a href="#top" class="to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+  </a>
 
 </div>
 </body>
